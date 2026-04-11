@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  overflow: hidden;
+}
+
+/* TEXT */
+.hero-content {
+  max-width: 50%;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: #f5d28c;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.hero button {
+  padding: 12px 28px;
+  border: none;
+  background: linear-gradient(135deg, #d4a017, #f5d28c);
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.hero button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212,160,23,0.4);
+}
+
+/* IMAGE */
+.hero-image {
+  width: 45%;
+  position: relative;
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* FLOATING CARD */
+.floating-card {
+  position: absolute;
+  bottom: -20px;
+  left: -40px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* ANIMATION */
+.show {
+  opacity: 1;
+  transform: translate(0,0);
+  transition: all 1s ease;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-content, .hero-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+
+  .floating-card {
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+  }
+}

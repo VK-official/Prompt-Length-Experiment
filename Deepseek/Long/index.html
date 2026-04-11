@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Velvet Cocoa | Artisan Luxury Chocolate</title>
+  <!-- Google Fonts: Playfair Display (elegant headings) + Lato (clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- No external CSS frameworks — pure custom CSS -->
+</head>
+<body>
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="navbar" aria-label="Main navigation">
+    <div class="navbar__container">
+      <!-- Logo: uses Playfair Display for luxury feel -->
+      <a href="/" class="navbar__logo" aria-label="Velvet Cocoa — Home">
+        Velvet<span class="navbar__logo-accent">Cocoa</span>
+      </a>
+      
+      <!-- Primary navigation (desktop & mobile) -->
+      <nav class="navbar__menu" aria-label="Primary">
+        <ul class="navbar__links">
+          <li><a href="#shop" class="navbar__link">Shop</a></li>
+          <li><a href="#collections" class="navbar__link">Collections</a></li>
+          <li><a href="#story" class="navbar__link">Our Story</a></li>
+          <li><a href="#journal" class="navbar__link">Journal</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Optional icon / cart placeholder (keeps layout balanced) -->
+      <div class="navbar__actions">
+        <button class="navbar__icon" aria-label="Search">🔍</button>
+        <button class="navbar__icon" aria-label="Account">👤</button>
+        <button class="navbar__icon" aria-label="Cart">🛒</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN HERO SECTION ===== -->
+  <main>
+    <section class="hero" aria-labelledby="hero-headline">
+      <!-- Two‑column layout: content + image (stacks on mobile) -->
+      <div class="hero__grid">
+        
+        <!-- LEFT: TEXT CONTENT — with staggered fade‑in animations -->
+        <div class="hero__content">
+          <!-- Small overline for extra luxury cue -->
+          <span class="hero__overline fade-stagger">Artisan · Single Origin</span>
+          
+          <!-- Main headline: Playfair Display, bold -->
+          <h1 id="hero-headline" class="hero__headline fade-stagger">
+            Where cocoa <br>becomes <span class="gold-text">gold</span>
+          </h1>
+          
+          <!-- Descriptive sub‑headline (Lato) -->
+          <p class="hero__subheadline fade-stagger">
+            Handcrafted small‑batch chocolates, wrapped in elegance. 
+            Experience the melt — a gift for the most discerning palates.
+          </p>
+          
+          <!-- Primary CTA button with hover glow + scale -->
+          <div class="hero__cta-wrapper fade-stagger">
+            <a href="#shop-now" class="cta-button cta-button--gold">
+              Shop Now
+              <span class="cta-button__arrow" aria-hidden="true">→</span>
+            </a>
+            <!-- Secondary subtle link (optional, adds depth) -->
+            <a href="#collections" class="hero__secondary-link">Explore collections</a>
+          </div>
+          
+          <!-- Small trust badge / elegant detail -->
+          <p class="hero__badge fade-stagger">✦  Free luxury gift wrapping  ✦</p>
+        </div>
+        
+        <!-- RIGHT: HERO IMAGE — melting chocolate placeholder -->
+        <div class="hero__media">
+          <div class="hero__image-wrapper">
+            <!-- Engaging placeholder: high‑resolution chocolate image (Pexels / free stock) 
+                 with dark overlay for text readability on mobile (if needed) -->
+            <img 
+              src="https://images.pexels.com/photos/4110266/pexels-photo-4110266.jpeg?auto=compress&cs=tinysrgb&w=800" 
+              alt="Velvet Cocoa — molten artisan chocolate dripping over gold flakes" 
+              class="hero__image"
+              loading="eager"
+            >
+            <!-- Decorative gold accent overlay (glassmorphism hint) -->
+            <div class="hero__image-accent" aria-hidden="true"></div>
+          </div>
+          <!-- Micro caption: reinforces luxury -->
+          <span class="hero__image-caption">72% Ecuadorian dark · velvet finish</span>
+        </div>
+      </div>
+      
+      <!-- Subtle scroll hint (elegant detail) -->
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-text">Discover</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- No external JS frameworks — pure vanilla -->
+  <script>
+    // (JavaScript is minimal — animations are CSS‑driven.
+    //  This script only adds a tiny extra polish: ensures that
+    //  any dynamic class toggles could be added later, but
+    //  the fade‑in is fully handled by CSS.)
+    (function() {
+      // Optional: add a class to body after load for extra smoothness.
+      // Not required, but demonstrates good practice.
+      window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        console.log('✨ Velvet Cocoa — luxury, handcrafted.');
+      });
+    })();
+  </script>
+</body>
+</html>

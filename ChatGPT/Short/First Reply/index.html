@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxury Chocolates</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 50%;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      color: #f5d28c;
+    }
+
+    .hero p {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .hero button {
+      padding: 12px 28px;
+      border: none;
+      background: linear-gradient(135deg, #d4a017, #f5d28c);
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212,160,23,0.4);
+    }
+
+    /* IMAGE SIDE */
+    .hero-image {
+      width: 45%;
+      position: relative;
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    /* Decorative floating card */
+    .floating-card {
+      position: absolute;
+      bottom: -20px;
+      left: -40px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* ANIMATION CLASSES */
+    .show {
+      opacity: 1;
+      transform: translate(0,0);
+      transition: all 1s ease;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero-content, .hero-image {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .hero-image {
+        margin-top: 30px;
+      }
+
+      .floating-card {
+        left: 50%;
+        transform: translateX(-50%) translateY(30px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  
+  <!-- TEXT CONTENT -->
+  <div class="hero-content" id="heroText">
+    <h1>Indulge in Pure Chocolate Bliss</h1>
+    <p>
+      Experience handcrafted luxury chocolates made with the finest cocoa beans.
+      A taste that melts your heart.
+    </p>
+    <button>Shop Now</button>
+  </div>
+
+  <!-- IMAGE CONTENT -->
+  <div class="hero-image" id="heroImage">
+    <!-- Replace this with high-quality chocolate image -->
+    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476f?q=80&w=1200" alt="Luxury Chocolate">
+
+    <div class="floating-card" id="card">
+      ⭐ Premium Quality<br>
+      100% Organic Cocoa
+    </div>
+  </div>
+
+</section>
+
+<script>
+  // Animate on load
+  window.addEventListener("load", () => {
+    document.getElementById("heroText").classList.add("show");
+
+    setTimeout(() => {
+      document.getElementById("heroImage").classList.add("show");
+    }, 300);
+
+    setTimeout(() => {
+      document.getElementById("card").classList.add("show");
+    }, 800);
+  });
+</script>
+
+</body>
+</html>

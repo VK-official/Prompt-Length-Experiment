@@ -1,0 +1,206 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #2D1E17; /* Deep Chocolate */
+    --text-main: #F4EBE1; /* Cream */
+    --accent: #C79A49; /* Soft Gold */
+    --text-muted: #BFA99E;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Hero Section Layout --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 5%;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* --- Typography --- */
+.eyebrow {
+    display: inline-block;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+h1 em {
+    color: var(--accent);
+    font-style: italic;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Buttons --- */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--bg-color);
+    border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--text-muted);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- Imagery --- */
+.image-wrapper {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, rgba(45,30,23,0.4) 0%, transparent 100%);
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.05); /* Prep for slight zoom-out effect */
+}
+
+/* --- Entrance Animations (Initial State) --- */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Active states added via JS */
+.reveal-item.active {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Staggering the animations */
+.hero-content .reveal-item:nth-child(1) { animation-delay: 0.1s; }
+.hero-content .reveal-item:nth-child(2) { animation-delay: 0.3s; }
+.hero-content .reveal-item:nth-child(3) { animation-delay: 0.5s; }
+.hero-content .reveal-item:nth-child(4) { animation-delay: 0.7s; }
+
+.hero-visual.active {
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+}
+
+.hero-visual.active .hero-img {
+    animation: imageZoomOut 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes imageZoomOut {
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 4rem;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+    .hero-visual {
+        justify-content: center;
+        width: 100%;
+    }
+}

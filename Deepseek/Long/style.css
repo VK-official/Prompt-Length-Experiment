@@ -1,0 +1,462 @@
+/* ===== RESET & BASE (mobile‑first) ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Luxurious dark palette: deep brown, gold, cream */
+  --color-deep-brown: #2E1C15;      /* background base */
+  --color-dark-espresso: #1F130E;    /* darker accents */
+  --color-gold: #D4AF37;            /* primary gold */
+  --color-gold-light: #E5C158;
+  --color-cream: #FDFBF7;           /* text / contrast */
+  --color-cream-soft: #F5EDE3;
+  --glass-bg: rgba(20, 12, 8, 0.25); /* glassmorphism background */
+  --glass-border: rgba(212, 175, 55, 0.15);
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
+  
+  /* Spacing */
+  --container-padding: 1.5rem;
+  --section-padding: 5rem 0;
+}
+
+body {
+  background-color: var(--color-deep-brown);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.gold-text {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* ===== GLASSMORPHISM NAVBAR (subtle backdrop blur) ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.75rem var(--container-padding);
+  /* Glass effect: semi‑transparent dark with blur */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Logo — Playfair Display, gold accent */
+.navbar__logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-cream);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navbar__logo-accent {
+  color: var(--color-gold);
+  font-style: italic;
+}
+.navbar__logo:hover {
+  color: var(--color-gold-light);
+}
+
+/* Navigation links */
+.navbar__menu {
+  display: none; /* hidden on mobile by default (we'll use a simple inline approach; but we can show flex on larger) */
+}
+.navbar__links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.navbar__link {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: var(--color-cream-soft);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+.navbar__link:hover {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+/* Icon actions (simple placeholder) */
+.navbar__actions {
+  display: flex;
+  gap: 1.2rem;
+}
+.navbar__icon {
+  background: none;
+  border: none;
+  color: var(--color-cream);
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+  padding: 0.2rem;
+}
+.navbar__icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  color: var(--color-gold);
+}
+
+/* For mobile: show navigation links in a row if space, otherwise hide.
+   We'll keep it clean: on small screens, hide .navbar__menu and show only logo + actions.
+   For elegance, we could add a hamburger later — but this hero focuses on visual.
+   Using media query to display navigation on tablets and up. */
+@media (min-width: 640px) {
+  .navbar__menu {
+    display: block;
+  }
+  .navbar__actions {
+    margin-left: auto;
+  }
+}
+@media (max-width: 639px) {
+  .navbar__menu {
+    display: none; /* we keep minimal, brand-forward */
+  }
+  .navbar__logo {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  min-height: 100vh;
+  padding-top: 5rem; /* to offset fixed navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 30%, #3f261c 0%, var(--color-deep-brown) 90%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem var(--container-padding);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Content area — mobile first: text centered */
+.hero__content {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Staggered fade-in animation (applied via class) */
+.fade-stagger {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+/* Individual delays for staggered entrance */
+.hero__overline {
+  animation-delay: 0.1s;
+}
+.hero__headline {
+  animation-delay: 0.25s;
+}
+.hero__subheadline {
+  animation-delay: 0.4s;
+}
+.hero__cta-wrapper {
+  animation-delay: 0.55s;
+}
+.hero__badge {
+  animation-delay: 0.7s;
+}
+
+/* Overline */
+.hero__overline {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-gold-light);
+  padding-bottom: 0.5rem;
+}
+
+/* Main headline — Playfair Display, large */
+.hero__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-cream);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.hero__subheadline {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-cream-soft);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA button — gold with hover scale + glow */
+.hero__cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-gold);
+  color: var(--color-dark-espresso);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.8rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255,215,0,0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: all 0.35s ease;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+/* Hover animation: scale + golden glow */
+.cta-button:hover {
+  transform: scale(1.05);
+  background: #E5C158;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 12px 25px rgba(0,0,0,0.3);
+  border-color: var(--color-cream);
+  color: #1a100c;
+}
+
+.cta-button__arrow {
+  transition: transform 0.2s;
+}
+.cta-button:hover .cta-button__arrow {
+  transform: translateX(6px);
+}
+
+/* Secondary link */
+.hero__secondary-link {
+  font-family: var(--font-body);
+  color: var(--color-cream-soft);
+  text-decoration: none;
+  font-weight: 400;
+  border-bottom: 1px dotted var(--color-gold);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero__secondary-link:hover {
+  color: var(--color-gold);
+  border-bottom-style: solid;
+}
+
+.hero__badge {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--color-gold-light);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ===== HERO IMAGE (melting chocolate placeholder) ===== */
+.hero__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 40px -10px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
+  transform: rotate(0.5deg);
+  transition: transform 0.4s;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: brightness(0.95) contrast(1.05);
+  transition: filter 0.4s;
+}
+
+/* Subtle gold accent overlay (glassmorphism hint) */
+.hero__image-accent {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.hero__image-caption {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color-gold-light);
+  text-align: right;
+  opacity: 0.8;
+}
+
+/* Scroll indicator */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--color-gold), transparent);
+}
+.hero__scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE (tablet & desktop) ===== */
+@media (min-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .hero__content {
+    text-align: left;
+    margin: 0;
+  }
+  .hero__subheadline {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .hero__cta-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  .hero__badge {
+    text-align: left;
+  }
+  .hero__image-wrapper {
+    max-width: 100%;
+    transform: rotate(0deg);
+  }
+  .hero__image-wrapper:hover {
+    transform: scale(1.01) rotate(-0.2deg);
+    box-shadow: 0 30px 50px -10px black, 0 0 0 2px rgba(212,175,55,0.3);
+  }
+}
+
+/* Larger desktop tweaks */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2.5rem;
+  }
+  .navbar__logo {
+    font-size: 2.2rem;
+  }
+  .hero__headline {
+    line-height: 1;
+  }
+}
+
+/* Ensure glass effect works on all browsers */
+@supports not (backdrop-filter: blur(12px)) {
+  .navbar {
+    background: rgba(30, 20, 15, 0.85);
+  }
+}
+
+/* Prefers reduced motion: disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .fade-stagger {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .cta-button {
+    transition: none;
+  }
+}
