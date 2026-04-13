@@ -1,7 +1,7 @@
 # Prompt Length Experiment
 An Experiment to Determine if Prompt Length Matters for AI Chatbots
 # 🧪 Prompt Length Experiment: Does Size Matter for Code Generation?
-
+**Condected in**: April 2026
 ## 📌 Overview
 This repository contains the results of an experiment designed to test a common assumption in AI: **Does a longer, more detailed prompt always generate better code?**
 
