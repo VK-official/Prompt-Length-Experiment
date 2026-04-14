@@ -262,6 +262,7 @@
         }
         .dir-folder { color: #60a5fa; font-weight: 600; }
         .dir-file { color: #e4e4e7; }
+        .dir-comment { color: #22c55e; font-style: italic; }
 
         /* --- Footer --- */
         footer { text-align: center; padding: 80px 0 40px; border-top: 1px solid var(--border-subtle); margin-top: 80px; }
@@ -276,14 +277,12 @@
 </head>
 <body>
 
-    <!-- Ambient Animated Background -->
     <div class="ambient-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
     </div>
 
-    <!-- HERO SECTION -->
     <section class="hero container">
         <div class="hero-badge reveal">An Empirical UI Study</div>
         <h1 class="reveal delay-1">The Prompt Length<br><span class="gradient-text">Myth: Busted.</span></h1>
@@ -296,7 +295,6 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE PROMPTS SECTION -->
     <section id="experiment" class="container">
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
             <h2 class="reveal">The Methodology & Prompts</h2>
@@ -304,7 +302,6 @@
         </div>
 
         <div class="prompts-grid">
-            <!-- Short Prompt Card -->
             <div class="prompt-card reveal delay-1" style="--card-color: var(--accent-green);" onclick="openModal('modal-short')">
                 <div class="icon"><i class="fa-solid fa-bolt"></i></div>
                 <h3>The Short Prompt</h3>
@@ -312,7 +309,6 @@
                 <div style="margin-top: 30px; color: var(--accent-green); font-weight: 600; font-size: 0.9rem;" class="mono">READ FULL PROMPT <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <!-- Medium Prompt Card -->
             <div class="prompt-card reveal delay-2" style="--card-color: var(--accent-cyan);" onclick="openModal('modal-medium')">
                 <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
                 <h3>The Medium Prompt</h3>
@@ -320,7 +316,6 @@
                 <div style="margin-top: 30px; color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem;" class="mono">READ FULL PROMPT <i class="fa-solid fa-arrow-right"></i></div>
             </div>
 
-            <!-- Long Prompt Card -->
             <div class="prompt-card reveal delay-3" style="--card-color: var(--accent-magenta);" onclick="openModal('modal-long')">
                 <div class="icon"><i class="fa-solid fa-list-check"></i></div>
                 <h3>The Long Prompt</h3>
@@ -330,7 +325,6 @@
         </div>
     </section>
 
-    <!-- DYNAMIC AI VIEWS (TABBED INTERFACE) -->
     <section class="container">
         <div style="text-align: center; margin-bottom: 40px;">
             <h2 class="reveal">Individual Model Performance</h2>
@@ -338,23 +332,21 @@
         </div>
 
         <div class="tabs-container reveal delay-2">
-            <!-- Tabs -->
             <div class="ai-tabs">
                 <button class="ai-tab-btn active" onclick="switchTab('chatgpt', this)">
-                    <img src="image_335f7c.png" alt="ChatGPT"> ChatGPT
+                    <img src="ChatGPT.png" alt="ChatGPT"> ChatGPT
                 </button>
                 <button class="ai-tab-btn" onclick="switchTab('deepseek', this)">
-                    <img src="image_335fa0.png" alt="Deepseek"> DeepSeek
+                    <img src="Deepseek.png" alt="Deepseek"> DeepSeek
                 </button>
                 <button class="ai-tab-btn" onclick="switchTab('gemini', this)">
-                    <img src="image_335fdd.png" alt="Gemini"> Gemini
+                    <img src="Gemini.png" alt="Gemini"> Gemini
                 </button>
                 <button class="ai-tab-btn" onclick="switchTab('grok', this)">
-                    <img src="image_335f42.jpg" alt="Grok"> Grok
+                    <img src="Grok.png" alt="Grok"> Grok
                 </button>
             </div>
 
-            <!-- Panel: ChatGPT -->
             <div id="panel-chatgpt" class="ai-content-panel active">
                 <div class="report-grid">
                     <div class="verdict-box">
@@ -382,7 +374,6 @@
                 </div>
             </div>
 
-            <!-- Panel: DeepSeek -->
             <div id="panel-deepseek" class="ai-content-panel">
                 <div class="report-grid">
                     <div class="verdict-box">
@@ -410,7 +401,6 @@
                 </div>
             </div>
 
-            <!-- Panel: Gemini -->
             <div id="panel-gemini" class="ai-content-panel">
                 <div class="report-grid">
                     <div class="verdict-box">
@@ -438,7 +428,6 @@
                 </div>
             </div>
 
-            <!-- Panel: Grok -->
             <div id="panel-grok" class="ai-content-panel">
                 <div class="report-grid">
                     <div class="verdict-box">
@@ -469,7 +458,6 @@
         </div>
     </section>
 
-    <!-- GITHUB REPOSITORY / EVIDENCE -->
     <section class="container reveal">
         <h2 style="text-align: center;">Open Source Evidence</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Explore the raw generated HTML, CSS, and JS files, alongside detailed individual markdown reports in the official repository.</p>
@@ -488,9 +476,7 @@
                     <div class="mac-dot dot-green"></div>
                 </div>
                 <div class="mono" style="color: var(--text-muted); font-size: 0.9rem;">Directory Structure</div>
-                <div style="width: 50px;"></div> <!-- Spacer for flex balance -->
-            </div>
-            <!-- The pre tag ensures all spaces and lines are preserved perfectly -->
+                <div style="width: 50px;"></div> </div>
             <div class="repo-body mono">
 <span class="dir-folder">vk-official-prompt-length-experiment/</span>
 ├── <span class="dir-file">README.md</span>
@@ -564,11 +550,12 @@
 │       └── <span class="dir-folder">First Reply/</span>
 │           └── <span class="dir-file">index.html</span>
 └── <span class="dir-folder">Results/</span>
-    └── <span class="dir-file">Report.md</span></div>
+    ├── <span class="dir-file">index (Result Website).html</span>
+    └── <span class="dir-file">Report.md</span> <span class="dir-comment">// Global Master Analysis</span>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="container">
         <h2 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 20px;">Strategic Minimalism.</h2>
         <p style="max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem;">"Over-prompting is the new over-engineering. The goal isn't to control the AI, but to guide it."</p>
@@ -578,9 +565,6 @@
         </div>
     </footer>
 
-    <!-- ================= MODALS FOR PROMPTS ================= -->
-
-    <!-- Modal: Short Prompt -->
     <div class="modal-overlay" id="modal-short" onclick="closeModal(event, 'modal-short')">
         <div class="modal-content">
             <div class="modal-header">
@@ -597,7 +581,6 @@
         </div>
     </div>
 
-    <!-- Modal: Medium Prompt -->
     <div class="modal-overlay" id="modal-medium" onclick="closeModal(event, 'modal-medium')">
         <div class="modal-content">
             <div class="modal-header">
@@ -623,7 +606,6 @@ Output format: Please provide the complete, structured code blocks for HTML, CSS
         </div>
     </div>
 
-    <!-- Modal: Long Prompt -->
     <div class="modal-overlay" id="modal-long" onclick="closeModal(event, 'modal-long')">
         <div class="modal-content">
             <div class="modal-header">
@@ -657,7 +639,6 @@ Please format your exact response using these placeholders...</pre>
         </div>
     </div>
 
-    <!-- ================= SCRIPTS ================= -->
     <script>
         // --- Modal Logic ---
         function openModal(modalId) {
